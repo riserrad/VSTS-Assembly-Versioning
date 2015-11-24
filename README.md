@@ -1,4 +1,4 @@
-## Assembly Versioning in Build vNext
+## Assembly Versioning for Build vNext
 
 This is a custom vNext build task to perform automatic Assembly Versioning in **Visual Studio Team Services** (aka Visual Studio Online) or Team Foundation Server 2015.
 
