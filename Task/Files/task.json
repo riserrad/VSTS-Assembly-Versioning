@@ -1,0 +1,61 @@
+﻿{
+  "id": "373BF70A-0CED-4AAF-B193-E846BEC239D0",
+  "name": "AssemblyVersioning",
+  "friendlyName": "Assembly Versioning",
+  "description": "Automatically increment you assembly versions to easily identify the version of your product.",
+  "author": "Ricardo Serradas",
+  "helpMarkDown": "This build task helps you version your assemblies, rewriting your AssemblyInfo files. To use it, please keep the default Build Number Format.",
+  "category": "Utility",
+  "visibility": [
+    "Build"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "1",
+    "Minor": "0",
+    "Patch": "2"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Versioning Assemblies $(message)",
+  "inputs": [
+    {
+      "name": "RootDir",
+      "type": "string",
+      "label": "The root working directory",
+      "defaultValue": "$(Build.SourcesDirectory)",
+      "required": true,
+      "helpMarkDown": "Define from which directory should this task search for AssemblyInfo files"
+    },
+    {
+      "name": "FileNamePattern",
+      "type": "string",
+      "label": "AssemblyInfo file name",
+      "defaultValue": "AssemblyInfo.cs",
+      "required": true,
+      "helpMarkDown": "The name the AssemblyInfo files this task should search for"
+    },
+    {
+      "name": "Major",
+      "type": "string",
+      "label": "Major number",
+      "defaultValue": "1",
+      "required": true,
+      "helpMarkDown": "The Major version of your Software. Should change only if it breaks compatibility with previous versions."
+    },
+    {
+      "name": "Minor",
+      "type": "string",
+      "label": "Minor number",
+      "defaultValue": "0",
+      "required": true,
+      "helpMarkDown": "The Minor identifier. Increment it if this build will deliver new features."
+    }
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\assemblyversioning.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
