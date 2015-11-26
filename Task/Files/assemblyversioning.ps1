@@ -9,15 +9,7 @@ param (
 	[string]$Minor
 )
 
-# Import-Module .\assemblyversioning.functions.ps1
-
 Write-Verbose 'Entering assemblyversioning.ps1'
-
-# For the TFS environment variables, I used this source:
-# https://msdn.microsoft.com/en-us/library/hh850448.aspx
-
-# Import the Task.Common dll that has all the cmdlets we need for Build
-#import-module "Microsoft.TeamFoundation.DistributedTask.Task.Common"
 
 ### First, mount the assembly version ###
 
@@ -36,7 +28,6 @@ function Get-JulianDate {
 $build = Get-JulianDate
 
 $buildNumberFromVso = $($env:BUILD_BUILDNUMBER)
-#$buildNumberFromVso = "20151124.4"
 
 $revision = $buildNumberFromVso.Split(".")[1]
 
@@ -48,9 +39,6 @@ Write-Host "The version this build will generate is $assemblyVersion"
 
 $assemblyVersionString = "AssemblyVersion(""$assemblyVersion"")"
 $assemblyFileVersionString = "AssemblyFileVersion(""$assemblyVersion"")"
-
-#Write-Host "A string é $assemblyVersionString"
-#Write-Host "A string é $assemblyFileVersionString"
 
 ### Encontrar os arquivos assemblyinfo
 
